@@ -20,8 +20,6 @@ import android.widget.ImageView;
 
 /**
  * @description ¿ÉÍÏ¶¯ÅÅÐòµÄGridView
- * @blog http://blog.csdn.net/xiaanming
- * @author xiaanming
  */
 @SuppressLint("NewApi")
 public class DragGridView extends GridView {
@@ -413,7 +411,7 @@ public class DragGridView extends GridView {
     }
 
     /**
-     * @author xiaanming
+     * 
      */
     public interface OnChanageListener {
 
