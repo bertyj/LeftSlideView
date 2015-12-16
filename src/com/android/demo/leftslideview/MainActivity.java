@@ -1,3 +1,7 @@
+/*
+ * @author Jing Yang
+ * @date 2015.12.15
+ */
 
 package com.android.demo.leftslideview;
 
@@ -8,24 +12,24 @@ import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
-import android.view.WindowManager;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.ListView;
+
+import com.android.demo.leftslideview.DragGridView.OnChanageListener;
+import com.android.demo.leftslideview.model.BaseCard;
+import com.android.demo.leftslideview.model.BaseCard.CardType;
+import com.android.demo.leftslideview.model.CardAdapter;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class MainActivity extends Activity implements OnClickListener {
 
     private SlidingLayout mSlidingLayout;
     private ImageButton mBtnShow;
-    private ListView mDummyListView;
-    private ArrayAdapter<String> mAdapter;
-    private final String[] mDummyItems = {
-            "Content Item 1",
-            "Content Item 2",
-            "Content Item 3",
-            "Content Item 4",
-            "Content Item 5"
-    };
+    private DragGridView mDragGridView;
+    private final ArrayList<BaseCard> mCardList = new ArrayList<BaseCard>();
+    private CardAdapter mCardAdapter;
+
     private final Handler mHandler = new Handler() {
 
         @Override
@@ -48,15 +52,42 @@ public class MainActivity extends Activity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.main_activity_layout);
         mSlidingLayout = (SlidingLayout) findViewById(R.id.left_slide_view);
         mBtnShow = (ImageButton) findViewById(R.id.btn_show);
-        mDummyListView = (ListView) findViewById(R.id.listview);
-        mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mDummyItems);
-        mDummyListView.setAdapter(mAdapter);
         mSlidingLayout.setScrollEvent(mBtnShow, mHandler);
         mBtnShow.setOnClickListener(this);
+        mDragGridView = (DragGridView) findViewById(R.id.gridview_right_card);
+        initCardList();
+        mCardAdapter = new CardAdapter(this, mCardList);
+        mDragGridView.setAdapter(mCardAdapter);
+        mDragGridView.setOnChangeListener(new OnChanageListener() {
+
+            @Override
+            public void onChange(int from, int to) {
+                BaseCard temp = mCardList.get(from);
+                if (from < to) {
+                    for (int i = from; i < to; i++) {
+                        Collections.swap(mCardList, i, i + 1);
+                    }
+                } else if (from > to) {
+                    for (int i = from; i > to; i--) {
+                        Collections.swap(mCardList, i, i - 1);
+                    }
+                }
+                mCardList.set(to, temp);
+                mCardAdapter.notifyDataSetChanged();
+            }
+        });
+    }
+
+    protected void initCardList() {
+        for (int i = 0; i < 6; i++) {
+            BaseCard card = new BaseCard();
+            card.setCardType(CardType.CARDTYPE_IMAGE_ONLY);
+            card.setLabel("Talking To The Moon");
+            mCardList.add(card);
+        }
     }
 
     @Override

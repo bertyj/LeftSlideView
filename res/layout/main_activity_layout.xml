@@ -32,11 +32,12 @@
                 android:layout_gravity="center_vertical"
                 android:background="@drawable/btn_hide" />
 
-            <ListView
-                android:id="@+id/listview"
+            <com.android.demo.leftslideview.DragGridView
+                android:id="@+id/gridview_right_card"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-            </ListView>
+                android:layout_height="match_parent"
+                android:listSelector="@android:color/transparent"
+                android:numColumns="3" />
         </LinearLayout>
     </com.android.demo.leftslideview.SlidingLayout>
 
