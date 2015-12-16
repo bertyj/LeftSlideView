@@ -49,6 +49,7 @@ public class CardAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         // TODO Auto-generated method stub
         CardViewTag cardViewTag;
+        BaseCard card = (BaseCard) getItem(position);
         if (convertView == null) {
             convertView = mLayoutInflater.inflate(R.layout.image_only_layout, null);
             ImageView cardImageView = (ImageView) convertView.findViewById(R.id.card_image);
@@ -60,7 +61,7 @@ public class CardAdapter extends BaseAdapter {
             cardViewTag = (CardViewTag) convertView.getTag();
         }
         cardViewTag.mCardImageView.setBackgroundResource(R.drawable.music_info_image);
-        cardViewTag.mLabelContentTextView.setText("Talking To The Moon");
+        cardViewTag.mLabelContentTextView.setText(card.getLabel());
         cardViewTag.mLabelIconImageView.setBackgroundResource(R.drawable.label_icon_music);
         return convertView;
     }
