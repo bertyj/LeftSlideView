@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="80dp"
+        android:paddingTop="40dp" >
+
+        <ImageView
+            android:id="@+id/upperinfo_image_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="20dp"
+            android:src="@drawable/image_profile_man" />
+
+        <TextView
+            android:id="@+id/upperinfo_text_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="10dp"
+            android:text="18:43"
+            android:textColor="#CCB37C"
+            android:textSize="34sp" />
+
+        <TextView
+            android:id="@+id/upperinfo_text_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="2018.02.18 星期日"
+            android:textColor="#9C9A92"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</RelativeLayout>

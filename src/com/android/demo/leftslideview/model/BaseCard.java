@@ -12,35 +12,41 @@ public class BaseCard {
         CARDTYPE_CONTENT_TOP_AND_BOTTOM
     }
 
-    private String mLabel;
-    private String mContentTop;
-    private String mContentBottom;
     private CardType mCardType;
+    private String mLabelContent;
+    private String mTopContent;
+    private String mBottomContent;
+    private String mTopTime;
+    private String mBottomTime;
+    private int mTopIcon;
+    private int mBottomIcon;
+    private int mBackgroundImage;
+    private int mLabelIcon;
 
     public BaseCard() {}
 
-    public String getLabel() {
-        return mLabel;
+    public String getLabelContent() {
+        return mLabelContent;
     }
 
-    public void setLabel(String mLabel) {
-        this.mLabel = mLabel;
+    public void setLabelContent(String mLabelContent) {
+        this.mLabelContent = mLabelContent;
     }
 
     public String getContentTop() {
-        return mContentTop;
+        return mTopContent;
     }
 
     public void setContentTop(String mContentTop) {
-        this.mContentTop = mContentTop;
+        this.mTopContent = mContentTop;
     }
 
     public String getContentBottom() {
-        return mContentBottom;
+        return mBottomContent;
     }
 
     public void setContentBottom(String mContentBottom) {
-        this.mContentBottom = mContentBottom;
+        this.mBottomContent = mContentBottom;
     }
 
     public CardType getCardType() {
@@ -49,6 +55,54 @@ public class BaseCard {
 
     public void setCardType(CardType mCardType) {
         this.mCardType = mCardType;
+    }
+
+    public String getTimeTop() {
+        return mTopTime;
+    }
+
+    public void setTimeTop(String mTimeTop) {
+        this.mTopTime = mTimeTop;
+    }
+
+    public String getTimeBottom() {
+        return mBottomTime;
+    }
+
+    public void setTimeBottom(String mTimeBottom) {
+        this.mBottomTime = mTimeBottom;
+    }
+
+    public int getTopIcon() {
+        return mTopIcon;
+    }
+
+    public void setTopIcon(int mTopIcon) {
+        this.mTopIcon = mTopIcon;
+    }
+
+    public int getBottomIcon() {
+        return mBottomIcon;
+    }
+
+    public void setBottomIcon(int mBottomIcon) {
+        this.mBottomIcon = mBottomIcon;
+    }
+
+    public int getBackgroundImage() {
+        return mBackgroundImage;
+    }
+
+    public void setBackgroundImage(int mBackgroundImage) {
+        this.mBackgroundImage = mBackgroundImage;
+    }
+
+    public int getLabelIcon() {
+        return mLabelIcon;
+    }
+
+    public void setLabelIcon(int mLabelIcon) {
+        this.mLabelIcon = mLabelIcon;
     }
 
 }

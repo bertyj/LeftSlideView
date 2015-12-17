@@ -51,7 +51,7 @@ public class CardAdapter extends BaseAdapter {
         CardViewTag cardViewTag;
         BaseCard card = (BaseCard) getItem(position);
         if (convertView == null) {
-            convertView = mLayoutInflater.inflate(R.layout.image_only_layout, null);
+            convertView = mLayoutInflater.inflate(R.layout.imageonly_card_layout, null);
             ImageView cardImageView = (ImageView) convertView.findViewById(R.id.card_image);
             ImageView labelIconImageView = (ImageView) convertView.findViewById(R.id.label_icon);
             TextView labelContentTextView = (TextView) convertView.findViewById(R.id.label_content);
@@ -60,9 +60,9 @@ public class CardAdapter extends BaseAdapter {
         } else {
             cardViewTag = (CardViewTag) convertView.getTag();
         }
-        cardViewTag.mCardImageView.setBackgroundResource(R.drawable.music_info_image);
-        cardViewTag.mLabelContentTextView.setText(card.getLabel());
-        cardViewTag.mLabelIconImageView.setBackgroundResource(R.drawable.label_icon_music);
+        cardViewTag.mCardImageView.setBackgroundResource(card.getBackgroundImage());
+        cardViewTag.mLabelContentTextView.setText(card.getLabelContent());
+        cardViewTag.mLabelIconImageView.setBackgroundResource(card.getLabelIcon());
         return convertView;
     }
 

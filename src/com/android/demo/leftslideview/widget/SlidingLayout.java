@@ -1,5 +1,5 @@
 
-package com.android.demo.leftslideview;
+package com.android.demo.leftslideview.widget;
 
 import android.app.Activity;
 import android.content.Context;
@@ -16,6 +16,8 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
+
+import com.android.demo.leftslideview.model.MessageFlag;
 
 public class SlidingLayout extends LinearLayout implements OnTouchListener {
     private Handler mHandler;
@@ -217,24 +219,24 @@ public class SlidingLayout extends LinearLayout implements OnTouchListener {
                     if (shouldScrollToLeftLayout()) {
                         scrollToLeftLayout();
                         Message msg = new Message();
-                        msg.what = Flag.SHOW_SLIDE;
+                        msg.what = MessageFlag.SHOW_SLIDE;
                         mHandler.sendMessage(msg);
                     } else {
                         scrollToRightLayout();
                         Message msg = new Message();
-                        msg.what = Flag.HIDE_SLIDE;
+                        msg.what = MessageFlag.HIDE_SLIDE;
                         mHandler.sendMessage(msg);
                     }
                 } else if (wantToShowRightLayout()) {
                     if (shouldScrollToContent()) {
                         scrollToRightLayout();
                         Message msg = new Message();
-                        msg.what = Flag.HIDE_SLIDE;
+                        msg.what = MessageFlag.HIDE_SLIDE;
                         mHandler.sendMessage(msg);
                     } else {
                         scrollToLeftLayout();
                         Message msg = new Message();
-                        msg.what = Flag.SHOW_SLIDE;
+                        msg.what = MessageFlag.SHOW_SLIDE;
                         mHandler.sendMessage(msg);
                     }
                 }

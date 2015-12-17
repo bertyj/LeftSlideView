@@ -3,27 +3,30 @@
     android:layout_height="match_parent"
     android:orientation="horizontal" >
 
-    <com.android.demo.leftslideview.SlidingLayout
+    <com.android.demo.leftslideview.widget.SlidingLayout
         android:id="@+id/left_slide_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#3E3F43"
         android:orientation="horizontal" >
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
 
-            <TextView
+            <include
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#0fffff"
-                android:gravity="center"
-                android:text="左侧界面" />
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                layout="@layout/left_titlebar_layout" />
+
+            <include layout="@layout/left_upperinfo_layout" />
         </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:background="#6E6E6E" >
 
             <ImageButton
                 android:id="@+id/btn_show"
@@ -32,13 +35,13 @@
                 android:layout_gravity="center_vertical"
                 android:background="@drawable/btn_hide" />
 
-            <com.android.demo.leftslideview.DragGridView
+            <com.android.demo.leftslideview.widget.DragGridView
                 android:id="@+id/gridview_right_card"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:listSelector="@android:color/transparent"
-                android:numColumns="3" />
+                android:numColumns="2" />
         </LinearLayout>
-    </com.android.demo.leftslideview.SlidingLayout>
+    </com.android.demo.leftslideview.widget.SlidingLayout>
 
 </LinearLayout>

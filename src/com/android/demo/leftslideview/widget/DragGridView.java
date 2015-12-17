@@ -1,5 +1,5 @@
 
-package com.android.demo.leftslideview;
+package com.android.demo.leftslideview.widget;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

@@ -14,10 +14,13 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ImageButton;
 
-import com.android.demo.leftslideview.DragGridView.OnChanageListener;
 import com.android.demo.leftslideview.model.BaseCard;
 import com.android.demo.leftslideview.model.BaseCard.CardType;
 import com.android.demo.leftslideview.model.CardAdapter;
+import com.android.demo.leftslideview.model.MessageFlag;
+import com.android.demo.leftslideview.widget.DragGridView;
+import com.android.demo.leftslideview.widget.DragGridView.OnChanageListener;
+import com.android.demo.leftslideview.widget.SlidingLayout;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -37,10 +40,10 @@ public class MainActivity extends Activity implements OnClickListener {
             // TODO Auto-generated method stub
             super.handleMessage(msg);
             switch (msg.what) {
-                case Flag.HIDE_SLIDE:
+                case MessageFlag.HIDE_SLIDE:
                     mBtnShow.setBackgroundResource(R.drawable.btn_hide);
                     break;
-                case Flag.SHOW_SLIDE:
+                case MessageFlag.SHOW_SLIDE:
                     mBtnShow.setBackgroundResource(R.drawable.btn_show);
                     break;
             }
@@ -82,12 +85,34 @@ public class MainActivity extends Activity implements OnClickListener {
     }
 
     protected void initCardList() {
-        for (int i = 0; i < 6; i++) {
-            BaseCard card = new BaseCard();
-            card.setCardType(CardType.CARDTYPE_IMAGE_ONLY);
-            card.setLabel("Talking To The Moon");
-            mCardList.add(card);
-        }
+        BaseCard musicCard = new BaseCard();
+        musicCard.setCardType(CardType.CARDTYPE_IMAGE_ONLY);
+        musicCard.setBackgroundImage(R.drawable.music_info_image);
+        musicCard.setLabelIcon(R.drawable.label_icon_music);
+        musicCard.setLabelContent("Òô ÀÖ");
+        mCardList.add(musicCard);
+
+        BaseCard settingCard = new BaseCard();
+        settingCard.setCardType(CardType.CARDTYPE_IMAGE_ONLY);
+        settingCard.setBackgroundImage(R.drawable.image_setting_active);
+        settingCard.setLabelIcon(R.drawable.label_icon_setting);
+        settingCard.setLabelContent("My Car");
+        mCardList.add(settingCard);
+
+        BaseCard radioCard = new BaseCard();
+        radioCard.setCardType(CardType.CARDTYPE_IMAGE_ONLY);
+        radioCard.setBackgroundImage(R.drawable.image_radio_info);
+        radioCard.setLabelIcon(R.drawable.label_icon_radio);
+        radioCard.setLabelContent("µç Ì¨");
+        mCardList.add(radioCard);
+
+        BaseCard navigationCard = new BaseCard();
+        navigationCard.setCardType(CardType.CARDTYPE_IMAGE_ONLY);
+        navigationCard.setBackgroundImage(R.drawable.image_navigation_background);
+        navigationCard.setLabelIcon(R.drawable.label_icon_navigation);
+        navigationCard.setLabelContent("µ¼ º½");
+        mCardList.add(navigationCard);
+
     }
 
     @Override
@@ -98,21 +123,16 @@ public class MainActivity extends Activity implements OnClickListener {
                 if (mSlidingLayout.isLeftLayoutVisible()) {
                     mSlidingLayout.scrollToRightLayout();
                     Message msg = new Message();
-                    msg.what = Flag.HIDE_SLIDE;
+                    msg.what = MessageFlag.HIDE_SLIDE;
                     mHandler.sendMessage(msg);
                 } else {
                     mSlidingLayout.scrollToLeftLayout();
                     Message msg = new Message();
-                    msg.what = Flag.SHOW_SLIDE;
+                    msg.what = MessageFlag.SHOW_SLIDE;
                     mHandler.sendMessage(msg);
                 }
                 break;
         }
     }
 
-}
-
-class Flag {
-    public static final int SHOW_SLIDE = 0;
-    public static final int HIDE_SLIDE = 1;
 }
