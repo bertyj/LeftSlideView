@@ -1,3 +1,7 @@
+/*
+ * @author Jing Yang
+ * @date 2015.12.16
+ */
 
 package com.android.demo.leftslideview.model;
 

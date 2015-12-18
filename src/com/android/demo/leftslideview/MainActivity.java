@@ -82,6 +82,8 @@ public class MainActivity extends Activity implements OnClickListener {
                 mCardAdapter.notifyDataSetChanged();
             }
         });
+        // Intent intent = new Intent(this, FloatButtonService.class);
+        // startService(intent);
     }
 
     protected void initCardList() {
